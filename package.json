@@ -1,5 +1,5 @@
 {
-  "name": "wechat-web-app",
+  "name": "wechat-web-vue",
   "version": "1.0.0",
   "description": "vue vant front",
   "author": "1048523306@qq.com",
@@ -15,9 +15,17 @@
   "dependencies": {
     "@babel/preset-env": "^7.8.7",
     "@babel/runtime": "^7.8.7",
+    "axios": "^0.19.2",
+    "core-js": "^3.6.4",
+    "iscroll": "^5.2.0",
     "moment": "^2.24.0",
+    "storejs": "^1.0.25",
+    "vant": "^2.5.4",
     "vue": "^2.5.11",
-    "vue-router": "^3.0.1"
+    "vue-baidu-map": "^0.21.22",
+    "vue-i18n": "^8.15.4",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -30,7 +38,6 @@
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.4",
     "glob-all": "^3.1.0",
     "hot-module-replacement": "^3.0.3",
@@ -41,13 +48,12 @@
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
-    "purify-css": "^1.2.5",
-    "purifycss-webpack": "^0.7.0",
     "sass-loader": "^8.0.2",
     "sass-resources-loader": "^2.0.1",
     "style-loader": "^1.1.3",
     "stylehacks": "^4.0.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^3.0.0",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.29.6",

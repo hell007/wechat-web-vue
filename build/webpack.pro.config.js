@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const glob = require('glob-all')
-const PurifyCSSPlugin = require('purifycss-webpack')
+//const PurifyCSSPlugin = require('purifycss-webpack-plugin')
 
 // 时间
 const moment = require('moment');
@@ -25,16 +25,32 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
     // 分割代码
     splitChunks: {
       cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+        vendor: {
+          chunks: 'all',
+          test: /node_modules/,
+          name: 'vendor',
+          minChunks: 1,
+          maxInitialRequests: 5,
+          minSize: 0,
+          priority: 100
+        },
+        common: {
+          chunks: 'all',
+          test: /[\\/]src[\\/]js[\\/]/,
+          name: 'common',
+          minChunks: 2,
+          maxInitialRequests: 5,
+          minSize: 0,
+          priority: 60
         },
         styles: {
           name: 'styles',
-          test: /\.css$/,
+          test: /\.(sa|sc|c)ss$/,
           chunks: 'all',
-          enforce: true,
+          enforce: true
+        },
+        runtimeChunk: {
+          name: 'manifest'
         },
       }
     },
@@ -42,6 +58,14 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
     // 压缩代码
     minimizer: [
       new UglifyJsPlugin({
+        uglifyOptions: {
+          //生产环境自动删除console
+          compress: {
+            drop_debugger: true,
+            drop_console: true,
+            pure_funcs: ['console.log']
+          }
+        },
         cache: true,
         parallel: true
       }),
@@ -53,8 +77,8 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
     //new CleanWebpackPlugin(['dist']), 
     // 拷贝静态文件
     new CopyWebpackPlugin([{
-      from: path.join(__dirname, '../public/img'),
-      to: path.join(__dirname, '../dist/web/img'),
+      from: path.join(__dirname, '../public/'),
+      to: path.join(__dirname, '../dist/web/'),
       ignore: ['.*']
     }]),
     // css extract

@@ -25,7 +25,7 @@
 |    |---main.mp.js // 小程序端用主入口
 |
 |---public
-|		|---index.html // web 端输出页面
+|    |---index.html // web 端输出页面
 ```
 
 ## 构建 web 端代码

@@ -1,0 +1,163 @@
+{
+  "id": "1634845",
+  "name": "vant-zl",
+  "font_family": "xa-icon",
+  "css_prefix_text": "xa-icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8731918",
+      "name": "店铺",
+      "font_class": "store",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "11184233",
+      "name": "栏目",
+      "font_class": "category",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "1031625",
+      "name": "ios",
+      "font_class": "ios",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "1487501",
+      "name": "android",
+      "font_class": "android",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "1366134",
+      "name": "业务",
+      "font_class": "business",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "2225235",
+      "name": "服务",
+      "font_class": "fuwu",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "2551692",
+      "name": "操作-更改收货地址",
+      "font_class": "dizhi",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "6684336",
+      "name": "区域排序",
+      "font_class": "address",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "8229519",
+      "name": "区域",
+      "font_class": "area",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "10166323",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "1025053",
+      "name": "键盘",
+      "font_class": "keyboard",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "12097776",
+      "name": "语音",
+      "font_class": "speak",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
+    },
+    {
+      "icon_id": "4638874",
+      "name": "智能AI",
+      "font_class": "ai",
+      "unicode": "e887",
+      "unicode_decimal": 59527
+    },
+    {
+      "icon_id": "12369809",
+      "name": "dc-icon-人工智能",
+      "font_class": "smart",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "689277",
+      "name": "日历 日期",
+      "font_class": "date",
+      "unicode": "e807",
+      "unicode_decimal": 59399
+    },
+    {
+      "icon_id": "5323801",
+      "name": "企业管理_员工管理",
+      "font_class": "manager",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "11755584",
+      "name": "月卡管理",
+      "font_class": "month",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "1167161",
+      "name": "公司名称",
+      "font_class": "company",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "736505",
+      "name": "时间",
+      "font_class": "time",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "7674885",
+      "name": "链接",
+      "font_class": "link",
+      "unicode": "e715",
+      "unicode_decimal": 59157
+    },
+    {
+      "icon_id": "12316670",
+      "name": "下载",
+      "font_class": "download",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "1079738",
+      "name": "赞_no",
+      "font_class": "bad-job",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    }
+  ]
+}

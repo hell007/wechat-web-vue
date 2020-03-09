@@ -5,17 +5,111 @@ Vue.use(VueRouter)
 
 export const constantRouter = [{
   path: '/',
-  component: () => import('@/views/home/index'),
+  component: () =>
+    import ('@/views/unit/index'),
   name: '首页'
 }, {
-  path: '/todo',
-  name: 'todo',
-  component: () => import('@/views/unit/todo')
+  path: '/dialog',
+  name: '通用组件',
+  component: () =>
+    import ('@/views/unit/dialog')
+}, {
+  path: '/refresh',
+  name: '下拉刷新上拉加载',
+  component: () =>
+    import ('@/views/unit/refresh')
+}, {
+  path: '/list',
+  name: '上拉加载',
+  component: () =>
+    import ('@/views/unit/list')
+}, {
+  path: '/table',
+  name: '表格',
+  component: () =>
+    import ('@/views/table/index')
+}, {
+  path: '/filter',
+  name: '表单筛选',
+  component: () =>
+    import ('@/views/form/index')
+}, {
+  path: '/register',
+  name: '表单填写',
+  component: () =>
+    import ('@/views/form/register')
+}, {
+  path: '/address',
+  name: '表单联动',
+  component: () =>
+    import ('@/views/form/address')
+}, {
+  path: '/formDetail',
+  name: '表单展示',
+  component: () =>
+    import ('@/views/form/detail')
+}, {
+  path: '/picture',
+  name: '图片',
+  component: () =>
+    import ('@/views/picture/index')
+}, {
+  path: '/echarts',
+  name: '图表',
+  component: () =>
+    import ('@/views/echarts/index')
+}, {
+  path: '/map',
+  name: '百度地图',
+  component: () =>
+    import ('@/views/map/index')
+}, {
+  path: '/location',
+  name: '地图定位',
+  component: () =>
+    import ('@/views/map/location')
+}, {
+  path: '/collection',
+  name: '我的收藏',
+  component: () =>
+    import ('@/views/collection/index')
+}, {
+  path: '/message',
+  name: '我的消息',
+  component: () =>
+    import ('@/views/message/index')
+}, {
+  path: '/order',
+  name: '我的订单',
+  component: () =>
+    import ('@/views/order/index')
+}, {
+  path: '/orderDetail',
+  name: '订单详情',
+  component: () =>
+    import ('@/views/order/detail')
+}, {
+  path: '/orderSteps',
+  name: '订单进度',
+  component: () =>
+    import ('@/views/order/steps')
+}, {
+  path: '/search',
+  name: '搜索',
+  component: () =>
+    import ('@/views/search/index')
+}, {
+  path: '/smart',
+  name: '智能搜索',
+  component: () =>
+    import ('@/views/search/smart')
 }]
 
 //路由详细配置
 export default new VueRouter({
   mode: 'hash',
   routes: constantRouter,
-  scrollBehavior: () => ({y: 0}),
+  scrollBehavior: () => ({
+    y: 0
+  }),
 })

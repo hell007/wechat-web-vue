@@ -1,0 +1,66 @@
+.form {
+  
+  &-panel {
+    margin:12px;
+    
+    &-list {
+      border-radius:8px;
+      margin-bottom:20px;
+      background-color:#fff;
+    }
+
+    &-item {
+      border-bottom: 1px solid #ebedf0;
+
+      .van-cell {
+        border-radius:8px;
+      }
+    }
+
+    &-radio,
+    &-checkbox,
+    &-switch,
+    &-rate {
+
+      .van-field__control {
+        width:0;
+      }
+
+      .van-field__button {
+        padding-left:0;
+      }
+
+      .van-radio {
+        margin-right:20px;
+      }
+
+      .van-checkbox {
+        margin-bottom:10px;
+      }
+    }
+
+    &-radio {
+      .van-field__button {
+        flex:1;
+      }
+      
+      .van-radio-group {
+        display:flex;
+        flex-direction:row;
+        justify-content: flex-end;
+      }
+
+      .van-radio__label {
+        color: $color-7d;
+      }
+    }
+
+    &-uploader {
+      padding:20px 10px;
+    }
+
+    &-submit {
+      margin:20px;
+    }
+  }
+}

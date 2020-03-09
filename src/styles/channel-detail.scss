@@ -1,0 +1,372 @@
+@import "global";
+
+.channel {
+
+  &-store {
+    margin:10px;
+    padding:10px;
+    background-color: $color-white;
+    border-radius:4px;
+    @include flex-row();
+
+    &-picture {
+      min-width:80px;
+      min-height:80px;
+      max-width:100px;
+      overflow:hidden;
+      margin-right:10px;
+
+      img {
+        border-radius:4px;
+      }
+    }
+
+    &-text {
+      flex:2.5;
+
+      h6 {
+        font-size:14px;
+        color:$color-32;
+      }
+    }
+
+    &-address {
+      @include flex-row();
+
+      span {
+        font-size:12px;
+        color:$color-7d;
+      }
+
+      em {
+        margin-left:3px;
+        color:$color-primary;
+        font-style:normal;
+      }
+    }
+  }
+
+  &-panel {
+    margin:10px;
+    padding:10px;
+    border-radius:4px;
+    background-color:$color-white;
+
+    &-title {
+      font-size: 14px;
+      color: $color-32;
+    }
+
+    &-box {
+      @include flex-row();
+      background-color: #f6f7fb;
+      border-radius: 4px;
+      padding:10px 0;
+      margin-top:10px;
+      margin-bottom: 0;
+
+      li {
+        flex: 1;
+        text-align: center;
+        @include flex-column();
+
+        b,
+        span {
+          font-size:13px;
+          color: $color-32;
+          margin-bottom: 5px;
+        }
+
+        em {
+          font-size:12px;
+          color: $color-7d;
+          font-style: normal;
+        }
+      }
+    }
+  }
+
+  &-service {
+
+    &-tab {
+      @include flex-row();
+      justify-content: center;
+      margin:15px 0;
+
+      li {
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 20px;
+        border: 1px solid $color-primary;
+        color: $color-primary;
+        font-size: 13px;
+        cursor: pointer;
+
+        &:nth-child(1) {
+          border-top-left-radius: 2px;
+          border-bottom-left-radius: 2px;
+        }
+
+        &:nth-child(2) {
+          border-left: 0;
+          border-right: 0;
+        }
+
+        &:nth-child(3) {
+          border-top-right-radius: 2px;
+          border-bottom-right-radius: 2px;
+        }
+
+        &.on {
+          background-color: $color-primary;
+          color: #fff;
+        }
+      }
+    }
+
+    h5 {
+      font-size: 13px;
+      color: $color-32;
+      margin-bottom: 5px;
+      text-align: center;
+      font-weight: normal;
+    }
+
+    &-panel {
+      margin-bottom: 10px;
+      background-color: #f6f7fb;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    &-box {
+      @include flex-row();
+      align-items: center;
+    }
+
+    &-left {      
+      flex: 1;
+
+      b {
+        font-size: 18px;
+        color: #ffa800;
+        font-weight: normal;
+        margin-bottom: 5px;
+      }
+
+       p {
+        font-size: 12px;
+        color: #a5a9b9;
+        margin-bottom: 0;
+      }
+    }
+
+    &-right {
+      flex: 2;
+    }
+
+    &-list {
+      @include flex-row();
+      margin-bottom: 0;
+
+      li {        
+        flex: 1;
+        text-align: center;
+
+        p {
+          font-size: 12px;
+          color: #a5a9b9;
+          margin-bottom: 0;
+        }
+
+        span {
+          margin-left: 5px;
+          font-size: 12px;
+          font-style: normal;
+          color: $color-primary;
+        }
+
+      }
+
+    }
+
+    &-title {
+      @include flex-row();
+      align-items: center;
+
+      h6 {
+        flex: 5;
+        margin-bottom: 0;
+        font-size:12px;
+        color: #192643;
+        font-weight: normal;
+      }
+    }
+
+    &-more,
+    &-more:hover,
+    &-more:active {
+      flex: 1;
+      padding:5px 0;
+      font-size:12px;
+      color: #a5a9b9;
+      text-align: right;
+    }
+
+    &-more::after,
+    &:hover::after,
+    &:active::after {
+      display: inline-block;
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 0.4949em;
+      height: 0.4949em;
+      border: 1px solid;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      transform: translate(-25%, 0) rotate(45deg);
+    }
+  }
+
+  &-reward {
+    padding-top:15px;
+
+    h5 {
+      font-size:13px;
+      color: $color-32;
+      margin-bottom:5px;
+      text-align: center;
+      font-weight: normal;
+    }
+
+    &-info {
+      @include flex-row()
+    }
+
+    &-left,
+    &-right {
+      flex: 1;
+      display: inline-block;
+      text-align: center;
+
+      b {
+        font-size:18px;
+        color: #ffa800;
+      }
+
+       p {
+        font-size: 12px;
+        color: #a5a9b9;
+        margin-bottom: 0;
+      }
+    }
+
+    &-right {
+
+      p {
+        @include flex-row();
+        align-items: center;
+        margin-bottom: 4px;
+      }
+
+      em {
+        margin-left: 5px;
+        font-size: 13px;
+        font-style: normal;
+        color: $color-primary;
+      }
+    }
+
+  }
+
+  &-echarts {
+
+    &-line {
+      min-height: 16.66666667rem;
+      margin-bottom:10px;
+    }
+
+    &-text {
+      @include flex-row();
+
+      span {
+        flex: 1;
+        font-size: 12px;
+        color: #a5a9b9;
+
+        b {
+          color: #f9685e;
+        }
+
+        &:last-child {
+          text-align: right;
+        }
+
+        &:last-child b {
+          color: #ffa800;
+        }
+
+      }
+    }
+
+    &-box {
+      margin:10px 0;
+      background-color: #f6f7fb;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    &-name {
+      @include flex-row();
+
+      b {
+        font-size:12px;
+        color:$color-32;
+        padding:5px;
+        flex:3;
+      }
+    }
+
+    &-pie {
+      min-height: 20rem;
+    }
+
+    &-type {
+      @include flex-row();      
+      align-items: center;
+      font-size: 12px;
+      color: #a5a9b9;
+      padding:5px;
+
+      &::after {
+        display: inline-block;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 0.4949em;
+        height: 0.4949em;
+        border: 1px solid;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        transform: translate(-25%, 0) rotate(45deg);
+      }
+    }
+  }
+
+  &-inspect {
+    position:fixed;
+    right:10px;
+    bottom:20px;
+    width:35px;
+    height:35px;
+    background-color: $color-primary;
+    color:$color-white;
+    font-size:12px;
+    border-radius:999px;
+    line-height:35px;
+    text-align:center;
+  }
+
+}

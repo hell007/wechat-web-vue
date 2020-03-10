@@ -149,7 +149,7 @@ export default {
 .channel {
 
   &-panel {
-    margin-bottom:10px;
+    margin-bottom:$margin;
 
     .van-cell {
       font-size:12px;
@@ -182,7 +182,7 @@ export default {
   &-map {
     width:100%;
     height:100%;
-    min-height:260px;
+    min-height:200px;
   }
 }
 

@@ -40,7 +40,8 @@
         <bm-marker 
           animation="BMAP_ANIMATION_BOUNCE"
           :dragging="true"
-          v-for="item in list"
+          v-for="item,index in list"
+          :key="index"
           :position="{lng:item.longitude, lat:item.latitude}"  
           :icon="{url: item.icon, size: {width:16, height:16}}"
           @click="showInfo(item)">

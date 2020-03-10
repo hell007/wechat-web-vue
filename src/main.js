@@ -21,8 +21,9 @@ Vue.use(Vant)
 // import echarts from 'echarts'
 // Vue.prototype.$echarts = echarts
 
-console.log('NODE_ENV====', process.env.NODE_ENV)
-console.log('VUE_APP_BASE_API===', process.env.VUE_APP_BASE_API)
+// webpack预设全局变量
+// console.log('NODE_ENV====', process.env.NODE_ENV)
+// console.log('VUE_APP_BASE_API===', process.env.VUE_APP_BASE_API)
 
 new Vue({
 	router,

@@ -3,6 +3,10 @@ const webpack = require('webpack')
 const WebPackBaseConfig = require('./webpack.base.config.js')
 const WebPackMerge = require('webpack-merge')
 
+//let env = require('./config/dev.env')
+// console.log('===', env)
+// process.exit() // 关闭node进程
+
 module.exports = WebPackMerge(WebPackBaseConfig, {
   devtool: 'inline-source-map',
   devServer: {
@@ -14,25 +18,22 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
     historyApiFallback: true,
     overlay: true,
     host: "localhost",
+    // 反向代理
     proxy: {
-      '/flep/app/api': {
-        target: "http://127.0.0.1:3000",
-        changeOrigin: true,
-        ws: true
-      },
       '/apis': {
-        target: 'http://localhost:9000',
+        target: "www.kunyujie.con",
         changeOrigin: true,
+        ws: true,
         pathRewrite: {
-          '^/apis': '/api'
+          '^/apis': ''
         }
-      }
+      },
     },
   },
   plugins: [
     //启用热替换模块
-    new webpack.HotModuleReplacementPlugin(), 
+    new webpack.HotModuleReplacementPlugin(),
     //启用HMR时,插件将显示模块的相对路径
-    new webpack.NamedModulesPlugin() 
+    new webpack.NamedModulesPlugin()
   ]
 })

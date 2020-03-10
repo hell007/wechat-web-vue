@@ -8,7 +8,6 @@ const {
 } = require('vue-loader')
 
 const isDev = process.env.NODE_ENV === 'development'
-
 let env = isDev ? require('./config/dev.env') : require('./config/pro.env')
 
 let pluginsConfig = [

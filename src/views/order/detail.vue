@@ -1,5 +1,5 @@
 <template>
-<div class="page page-primary">
+<div class="page">
   <div class="page-header">
     <page-title :title="title">
     </page-title>
@@ -140,6 +140,11 @@ export default {
     go() {
       this.$router.push('orderSteps')
     }
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('不刷新', to)
+    to.meta.keepAlive = true; // order不刷新
+    next();
   },
   created() {
   }

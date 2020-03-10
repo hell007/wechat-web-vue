@@ -18,6 +18,14 @@
 
       <div class="section">
         <h5>loadding</h5>
+
+        <van-button 
+          type="info"
+          @click="go">首页</van-button>
+      </div>
+
+      <div class="section">
+        <h5>loadding</h5>
         <van-loading 
           v-if="loadding.visible"
           size="24px"
@@ -157,6 +165,9 @@ export default {
     }
   },
   methods: {
+    go() {
+      this.$router.back()
+    },
     navBack() {
       this.$toast('自定义回退事件');
     },
@@ -243,7 +254,6 @@ export default {
     }
   },
   created() {
-    
   }
 }
 </script>

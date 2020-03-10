@@ -1,5 +1,5 @@
 <template>
-<div class="page page-primary">
+<div class="page">
   <div class="page-header">
     <page-title :title="title">
     </page-title>
@@ -45,6 +45,9 @@
             </div>
           </li>
         </ul>
+
+        
+        <van-button @click="go" type="primary">去订单</van-button>
         
         <van-steps 
           class="order-steps"
@@ -96,7 +99,15 @@ export default {
     },
     onLoad() {
       this.$toast(load)
+    },
+    go() {
+      this.$router.push('/order')
     }
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('刷新', to)
+    to.meta.keepAlive = false; // order刷新
+    next();
   },
   created() {
   }

@@ -31,7 +31,7 @@ export default {
   methods: {
     navBack() {
       //console.log('==',this.isBack) 
-      this.isBack ? this.$emit('onBack') : this.$router.back()
+      this.isBack ? this.$emit('onBack') : this.$router.go(-1)
     }  
   }
 }

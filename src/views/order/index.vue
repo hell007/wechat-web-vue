@@ -1,5 +1,5 @@
 <template>
-<div class="page page-primary">
+<div class="page">
   <div class="page-header">
     <page-title :title="title">
     </page-title>
@@ -119,6 +119,7 @@
 <script>
 import contentWithEmpty from '@/components/contentWithEmpty';
 import { theme } from '@/config';
+import {fetchGet, fetchPost} from '@/api';  
 
 export default {
   name: 'order',
@@ -151,9 +152,22 @@ export default {
     },
     go() {
       this.$router.push('orderDetail')
+    },
+    test() {
+      const self = this 
+      const user = {
+        'loginId': '13988234913',//' 13988234913',
+        'verifyCode': '708090'
+      }
+      fetchPost('/flep/app/api/sys/login', user).then(function (res) {
+        console.log('发生了请求==', res)
+      }).catch(() => {
+        self.$toast({type: 'error', message: '网络异常'});
+      });
     }
   },
   created() {
+    this.test()
   }
 }
 </script>

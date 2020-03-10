@@ -58,4 +58,17 @@ npm install
 用开发者工具将 dist/mp 目录作为小程序项目导入之后，点击工具栏下的`构建 npm`，即可预览效果。
 
 
-## 
+## 总结
+
+### 1、Vue 实现前进刷新，后退不刷新的效果
+
+- 参考order为例
+
+1. App.vue roter-view 设置
+
+2. 路由回退需要更改为 $router.go(-1)
+
+3. router meta 设置 keepAlive
+
+
+### 2、

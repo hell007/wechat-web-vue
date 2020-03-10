@@ -4,7 +4,7 @@ import {
 } from '@/api'
 
 import {
-  Domain
+  domain
 } from '@/config'
 
 const state = {
@@ -23,7 +23,7 @@ const actions = {
     commit
   }, form) {
     return new Promise((resolve, reject) => {
-      fetchPost(`${Domain.Zl}'/unit/login'`, form).then(response => {
+      fetchPost(`${domain.zl}'/unit/login'`, form).then(response => {
         const user = response.data.data
         if(user){
           const roles = []
@@ -47,7 +47,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       (async() => {
         try {
-          let response = await fetchGet(`${Domain.Zl}'/unit/list?'`, listQuery);
+          let response = await fetchGet(`${domain.zl}'/unit/list?'`, listQuery);
           resolve(response)
         } catch (ex) {
           reject(ex)

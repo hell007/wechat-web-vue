@@ -5,9 +5,9 @@ Vue.use(VueRouter)
 
 export const constantRouter = [{
   path: '/',
+  name: '首页',
   component: () =>
-    import ('@/views/unit/index'),
-  name: '首页'
+    import ('@/views/unit/index')
 }, {
   path: '/dialog',
   name: '通用组件',
@@ -17,7 +17,7 @@ export const constantRouter = [{
   path: '/refresh',
   name: '下拉刷新上拉加载',
   component: () =>
-    import ('@/views/unit/refresh')
+    import ('@/views/unit/refresh') 
 }, {
   path: '/list',
   name: '上拉加载',
@@ -102,17 +102,26 @@ export const constantRouter = [{
   path: '/order',
   name: '我的订单',
   component: () =>
-    import ('@/views/order/index')
+    import ('@/views/order/index'),
+  meta: {
+    keepAlive: true
+  },   
 }, {
   path: '/orderDetail',
   name: '订单详情',
   component: () =>
-    import ('@/views/order/detail')
+    import ('@/views/order/detail'),
+  meta: {
+    keepAlive: true
+  },  
 }, {
   path: '/orderSteps',
   name: '订单进度',
   component: () =>
-    import ('@/views/order/steps')
+    import ('@/views/order/steps'),
+  meta: {
+    keepAlive: false
+  }, 
 }, {
   path: '/search',
   name: '搜索',

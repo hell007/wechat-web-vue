@@ -69,6 +69,26 @@ export const constantRouter = [{
   component: () =>
     import ('@/views/map/location')
 }, {
+  path: '/category',
+  name: '我的分类',
+  component: () =>
+    import ('@/views/category/index')
+}, {
+  path: '/categoryDetail',
+  name: '分类详情',
+  component: () =>
+    import ('@/views/category/detail')
+}, {
+  path: '/categoryRepeat',
+  name: '问答和提问',
+  component: () =>
+    import ('@/views/category/repeat')
+}, {
+  path: '/categoryReply',
+  name: '回复',
+  component: () =>
+    import ('@/views/category/reply')
+}, {
   path: '/collection',
   name: '我的收藏',
   component: () =>

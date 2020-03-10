@@ -48,7 +48,7 @@ export default {
       primary: theme.primary,
       title: '模板',
       list: [{
-        name: '弹窗',
+        name: '弹窗使用',
         url: '/dialog'
       }, {
         name: '下拉刷新上拉加载',
@@ -57,7 +57,7 @@ export default {
         name: '上拉加载',
         url: '/list'
       }, {
-        name: '表格',
+        name: '表格组件',
         url: '/table'
       }, {
         name: '表单筛选',
@@ -72,14 +72,17 @@ export default {
         name: '表单展示',
         url: '/formDetail'
       }, {
-        name: '图片',
+        name: '图片组件',
         url: '/picture'
       }, {
-        name: '图表',
+        name: '图表使用',
         url: '/echarts'
       }, {
         name: '百度地图',
         url: '/location'
+      }, {
+        name: '我的分类',
+        url: '/category'
       }, {
         name: '我的收藏',
         url: 'collection'
@@ -90,7 +93,7 @@ export default {
         name: '我的订单',
         url: 'order'
       }, {
-        name: '搜索',
+        name: '我的搜索',
         url: 'search'
       }, {
         name: '智能搜索',

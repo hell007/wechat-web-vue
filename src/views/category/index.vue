@@ -21,7 +21,8 @@
       </van-search>
     </form>
     <section class="knowledge-filter">
-      <van-dropdown-menu>
+      <van-dropdown-menu 
+        :active-color="primary">
         <van-dropdown-item v-model="opt1" :options="option1" @change="change1"/>
         <van-dropdown-item v-model="opt2" :options="option2" @change="change1"/>
         <van-dropdown-item v-model="opt3" :options="option3" @change="change1"/>
@@ -43,7 +44,7 @@
           :finished-text="finishedText"
           @load="onLoad">  
           <div class="knowledge-item">
-            <div class="knowledge-item-hd on">
+            <div class="knowledge-item-hd on" @click="go">
               <!-- <van-icon name="fire" /> -->
               <h6>5G业务知识、5G咪咕业务、5G客服文档</h6>
             </div>
@@ -70,7 +71,53 @@
             </div>
           </div>
           <div class="knowledge-item">
-            <div class="knowledge-item-hd">
+            <div class="knowledge-item-hd" @click="go">
+              <h6>5G业务知识、5G咪咕业务、5G客服文档</h6>
+            </div>
+            <div class="knowledge-item-bd">
+              <span class="knowledge-item-opt">
+                <van-icon name="eye-o" size="18"/>
+                <em>853</em>
+              </span>
+              <span class="knowledge-item-opt">
+                <van-icon name="chat-o" size="18"/>
+                <em>853</em>
+              </span>
+              <span class="knowledge-item-opt">
+                <van-icon name="star-o" size="18"/>
+                <em>853</em>
+              </span>
+              <span class="knowledge-item-opt">
+                <van-icon name="good-job-o" size="18"/>
+                <em>853</em>
+              </span>
+            </div>
+          </div>
+          <div class="knowledge-item">
+            <div class="knowledge-item-hd" @click="go">
+              <h6>5G业务知识、5G咪咕业务、5G客服文档</h6>
+            </div>
+            <div class="knowledge-item-bd">
+              <span class="knowledge-item-opt">
+                <van-icon name="eye-o" size="18"/>
+                <em>853</em>
+              </span>
+              <span class="knowledge-item-opt">
+                <van-icon name="chat-o" size="18"/>
+                <em>853</em>
+              </span>
+              <span class="knowledge-item-opt">
+                <van-icon name="star-o" size="18"/>
+                <em>853</em>
+              </span>
+              <span class="knowledge-item-opt">
+                <van-icon name="good-job-o" size="18"/>
+                <em>853</em>
+              </span>
+            </div>
+          </div>
+          <div class="knowledge-item">
+            <div class="knowledge-item-hd" @click="go">
               <h6>5G业务知识、5G咪咕业务、5G客服文档</h6>
             </div>
             <div class="knowledge-item-bd">
@@ -153,6 +200,9 @@ export default {
     onViews() {
 
     },
+    go() {
+      this.$router.push('categoryDetail')
+    },
     getList() {
       const self = this
 
@@ -210,41 +260,14 @@ export default {
 <style scoped lang="scss">
 @import "../../styles/_global.scss";
 
+.page-header {
+  box-shadow:none;
+}
+
 .knowledge {
 
-  &-search {
-    .van-search {
-      padding:6px;
-
-      &__action,
-      &__action:active {
-        color: $color-white;
-        background-color:$color-primary;
-      }
-      
-    }
-  }
-
   &-filter {
-
-    .van-dropdown-menu {
-      height:40px;
-
-      &__title {
-        font-size:14px;
-      }
-
-      &__item {
-        min-width: auto;
-        padding-right: 12px;
-        border-right: 1px solid $color-border-gray;
-        font-size:13px;
-
-        &:last-child {
-          border-right:0;
-        }
-      }
-    }
+    border-bottom:1px solid $color-border-gray;
   }
 
   &-list {
@@ -252,7 +275,8 @@ export default {
   }
 
   &-item {
-    padding:5px 10px;
+    padding:4px 10px;
+    min-height:55px;
     border-bottom:1px solid $color-border-gray;
 
     &-hd {
@@ -260,8 +284,9 @@ export default {
 
       h6 {
         flex:5;
-        font-size:13px;
+        font-size:$font-14;
         color:$color-7d;
+        margin-bottom:5px;
       }
 
       &.on {
@@ -283,15 +308,15 @@ export default {
 
     &-bd {
       @include flex-row();
-      justify-content: flex-end;   
+      justify-content: flex-end;
     }
 
     &-opt {
       @include flex-row();
       align-items: center;
       margin-right:15px;
-      font-size:12px;
-      color:$color-7d;
+      font-size:$font-12;
+      color:$color-96;
 
       em {
         font-style:normal;

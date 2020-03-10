@@ -151,7 +151,13 @@ export default {
       time: utils.lastDate(1, 'months', 'YYYY-MM'), //上一个月，返回2020-xx,
       picker: {
         show: false,
-        columns: ['选项1', '选项2']
+        columns: [{
+          name: '选项1',
+          id: '1'
+        }, {
+          name:  '选项2',
+          id: '2'
+        }]
       },
       date: {
         show: false,
@@ -269,8 +275,9 @@ export default {
       this.date.show = false
       this.time = utils.formatDate(value, 'YYYY-MM')
     },
-    pickerConfirm(value) {
-      this.$toast(value);
+    pickerConfirm(item) {
+      console.log('item==',item);
+      this.picker.show = false
     },
     onTab(index) {
       //this.$toast(index);

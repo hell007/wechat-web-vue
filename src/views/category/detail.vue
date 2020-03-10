@@ -107,7 +107,7 @@
   <div class="page-footer">
     <div class="knowledge-bar">
       <div class="knowledge-bar-left">
-        <input readonly placeholder="请输入提问" />
+        <input readonly placeholder="请输入提问"/>
       </div>
       <div class="knowledge-bar-right">
         <van-button :icon="isCollect ?'star-o':'star'" 

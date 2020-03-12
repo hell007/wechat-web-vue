@@ -1,7 +1,7 @@
 <template>
   <van-popup 
-    v-model="visible" 
-    :close-on-click-overlay="false"
+    v-model="show" 
+    @click-overlay="onOverlay"
     position="right"
     :style="{height:'100%',width:'80%'}"
     get-container="body">
@@ -56,6 +56,20 @@ export default {
     confirm: {
       type: Function,
       default: null
+    },
+    overlay: {
+      type: Function,
+      default: null
+    }
+  },
+  computed: {
+    show: {
+      get() {
+        return this.visible
+      },
+      set(val) {
+        this.$emit('update:visible', val)
+      }
     }
   },
   methods: {
@@ -64,6 +78,9 @@ export default {
     },
     onConfirm() {
       this.$emit('confirm');
+    },
+    onOverlay() {
+      this.$emit('overlay');
     }
   }
 }

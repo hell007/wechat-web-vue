@@ -90,7 +90,7 @@ export default {
         name: '我的消息',
         url: 'message'
       }, {
-        name: '我的订单',
+        name: '我的订单(多选/单选案列)',
         url: 'order'
       }, {
         name: '我的搜索',

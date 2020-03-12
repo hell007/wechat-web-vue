@@ -27,19 +27,18 @@ export default {
       cached: [], //['order'] 1、详情页面返回 /order 列表页不会在发请求
     }
   },
-  watch: {
-    // $route(to, from) {
-    //   const fName = from.name
-    //   const tName = to.name
-    //   console.log('app==', to, from)
-    //   if (from.meta.isRefresh) {
-    //     from.meta.isRefresh = false
-    //     // 在这里重新请求数据
-    //   }
-    // }
-  },
+  // watch: {
+  //   $route(to, from) {
+  //     const fName = from.name
+  //     const tName = to.name
+  //     console.log('app==', to, from)
+  //     if (from.meta.isRefresh) {
+  //       from.meta.isRefresh = false
+  //       // 在这里重新请求数据
+  //     }
+  //   }
+  // },
   created() {
-
   }
 }
 </script>

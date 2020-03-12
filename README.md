@@ -62,13 +62,24 @@ npm install
 
 ### 1、Vue 实现前进刷新，后退不刷新的效果
 
-- 参考order为例
+- 参考order为例 (两种方式)
 
-1. App.vue roter-view 设置
-
-2. 路由回退需要更改为 $router.go(-1)
-
-3. router meta 设置 keepAlive
-
+		1. App.vue roter-view 设置
+		2. 路由后退需要更改为 $router.go(-1)
+		3. router meta 设置 keepAlive
 
 ### 2、
+
+
+## 知识
+
+
+	递归组件、
+	动态组件（keep-alive）、
+	异步组件、
+	全局组件注册、
+	内联模板、
+	Vue 的构造器——extend、
+	vue 修饰符sync深入解析
+
+[15个Vue高级面试题](https://juejin.im/post/5de4d126f265da05c33fcb9d)

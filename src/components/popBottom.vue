@@ -1,6 +1,7 @@
 <template>
   <van-popup
     v-model="visible"
+    :close-on-click-overlay="false"
     position="bottom">
     <div class="pop-header">
       <span class="pop-header-left" @click="onCancel">{{cancelText}}</span>

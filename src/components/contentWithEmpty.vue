@@ -34,7 +34,6 @@
 @import "../styles/_global.scss";
 
 .empty {
-  //height:100%;
 
   &-panel {
     padding:50px 12px;
@@ -44,12 +43,9 @@
 
     &-icon {
       display:block;
-      //content:'';
       width:160px;
       height:160px;
       margin:0 auto;
-      //background-image:url(../assets/images/empty.png);
-      //background-size:100%;
     }
   }
 }

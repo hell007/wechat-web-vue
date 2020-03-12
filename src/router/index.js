@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+//异步组件 component: () => import ('@/views/xxx')
 export const constantRouter = [{
   path: '/',
   name: '首页',

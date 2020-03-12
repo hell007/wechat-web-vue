@@ -13,19 +13,16 @@
             v-model="form.province"
             input-align="right"
             readonly
-            label="省"
-            placeholder="请选择"
-            @click="openMultiPicker()">
-            <div slot="right-icon">
-              <i class="van-icon van-icon-arrow"></i>
-            </div>
+            label="省份"
+            placeholder="请输入">
+            <div slot="right-icon"></div>
           </van-field>
 
           <van-field
             v-model="form.city"
             input-align="right"
             readonly
-            label="市"
+            label="地市"
             placeholder="请选择"
             @click="openMultiPicker()">
             <div slot="right-icon">
@@ -37,7 +34,7 @@
             v-model="form.county"
             input-align="right"
             readonly
-            label="区/县"
+            label="区县"
             placeholder="请选择">
             <div slot="right-icon">
               <i class="van-icon van-icon-arrow"></i>
@@ -110,14 +107,28 @@
       :color="primary"
       :title-active-color="primary"
       v-model="multiPicker.active">
-      <van-tab 
-        v-for="item,index in multiPicker.list"
-        :key="`multiPicker-${index}`" 
-        :title="multiPicker.title[index]">
+      <van-tab title="地市">
         <van-picker 
-          value-key="label"
-          :columns="item" 
-          @change="multiChange" />
+          :columns="cityList" 
+          @change="cityChange" />
+      </van-tab>
+      <van-tab title="区/县">
+        <van-picker 
+          :columns="countyList"
+          :loading="multiPicker.countyLoading" 
+          @change="countyChange" />
+      </van-tab>
+      <van-tab title="乡/镇">
+        <van-picker 
+          :columns="townList"
+          :loading="multiPicker.townLoading" 
+          @change="townChange" />
+      </van-tab>
+      <van-tab title="村/路">
+        <van-picker 
+          :columns="villageList"
+          :loading="multiPicker.villageLoading" 
+          @change="villageChange" />
       </van-tab>
     </van-tabs>
   </van-popup>
@@ -135,87 +146,58 @@ export default {
   data() {
     return {
       primary: theme.primary,
-      title: '动态城市案列',
+      title: '宽带地址登记',
       form: {
-        province: '',
+        province:'云南',
       },
       multiPicker: {
         show: false,
         active: 0,
-        loading: false,
-        title: ['省', '市', '区/县'],
-        list: [[], [], []]
+        countyLoading: false,
+        townLoading: false,
+        villageLoading: false
       },
+      cityList:[ '请选择'],
+      countyList: ['请选择'],
+      townList: ['请选择'],
+      villageList:['请选择']
     }
   },
   methods: {
     openMultiPicker() {
       this.multiPicker.show = true;
     },
-    multiInit() {
-      const option = {
-        label: '请选择',
-        value: ''
-      }
-      this.multiPicker.list.forEach((item) => {
-        item.push(option)
-      })
+    getList() {
+      this.cityList = ['请选择', '昆明','曲靖']
     },
-    multiInsert(list) {
-      const option = {
-        label: '请选择',
-        value: ''
-      }
-      list.unshift(option)
-    },
-    multiChange(picker, item, index) {
-      console.log(this.multiPicker.active, item, index)
-      this.multiPicker.active = this.multiPicker.active+1
-      this.multiPicker.loading = true
-
+    cityChange(picker, value, index) {
+      console.log(value, index)
+      this.multiPicker.active = 1
+      this.multiPicker.countyLoading = true 
       // 渲染区县数据模拟
       setTimeout(() => {
+        this.multiPicker.countyLoading = false 
+        this.countyList =  ['请选择', '麒麟区', '麒麟二']
 
-        let city = [{
-          label: "昆明市",
-          value: "5301"} ,{
-          label: "曲靖市",
-          value: "5302"}]
-
-        let county = [{
-          label: "盘龙区",
-          value: "53011"} ,{
-          label: "五华区",
-          value: "53021"}]  
-
-        let list =  this.multiPicker.active ==1 ? city : county
-
-        this.multiInsert(list)
-        this.multiPicker.list[this.multiPicker.active] =  list
-        this.multiPicker.loading = false 
-        //this.form.province = item.label
-      },50)
+        this.form.city = value
+      },200)
     },
-    getList() {
-      const index = this.multiPicker.active
-      let arr = [{
-        label: "云南省",
-        value: "530"} ,{
-        label: "江苏省",
-        value: "230"}]
+    countyChange(picker, value, index){
 
-      this.multiInsert(arr)
-      this.multiPicker.list[index] = arr
+    },
+    townChange(picker, value, index) {
+
+    },
+    villageChange(picker, value, index) {
+      //最后一个关闭
+      this.multiPicker.show = false
     },
     onSubmit() {
       this.$toast('登记')
     }
   },
   created() {
-    this.multiInit();
-  },
-  mounted() {
-    this.getList()
+    this.getList();
   }
 }
 </script>

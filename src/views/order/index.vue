@@ -140,8 +140,9 @@
   
   <!-- 右弹窗 -->
   <pop-right
-    :visible="filter.show"
+    :visible.sync="filter.show"
     @confirm="popConfirm"
+    @overlay="popOverlay"
     @cancel="popCancel">
     <section slot="body" class="order-filter">
       <dl class="order-filter-panel">
@@ -205,7 +206,7 @@ export default {
       filter: {
         show: false,
         types: [{
-          label: '物联网',
+          label: '物联网物联网',
           value: '11'
         },{
           label: '互联网',
@@ -246,6 +247,10 @@ export default {
   methods: {
     popConfirm() {
       this.$toast('确定')
+    },
+    popOverlay() {
+      this.filter.show = false
+      this.$toast('遮罩关闭')
     },
     popCancel() {
       this.filter.show = false

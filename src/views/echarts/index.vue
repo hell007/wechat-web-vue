@@ -330,9 +330,7 @@ export default {
       font-size:$font-14;
       color:$color-32;
       padding-left:5px;
-      overflow:hidden;
       @include ellipsis();
-      flex:4;
     }
   }
 

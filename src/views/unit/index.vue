@@ -48,8 +48,8 @@ export default {
       primary: theme.primary,
       title: '模板',
       list: [{
-        name: '弹窗使用',
-        url: '/dialog'
+        name: '组件使用',
+        url: '/component'
       }, {
         name: '下拉刷新上拉加载',
         url: '/refresh'

@@ -10,10 +10,10 @@ export const constantRouter = [{
   component: () =>
     import ('@/views/unit/index')
 }, {
-  path: '/dialog',
+  path: '/component',
   name: '通用组件',
   component: () =>
-    import ('@/views/unit/dialog')
+    import ('@/views/unit/component')
 }, {
   path: '/refresh',
   name: '下拉刷新上拉加载',

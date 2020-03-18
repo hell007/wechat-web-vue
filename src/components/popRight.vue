@@ -1,7 +1,8 @@
 <template>
-  <van-popup 
-    v-model="show" 
+  <van-popup
+    v-model="show"
     @click-overlay="onOverlay"
+    :lock-scroll="true"
     position="right"
     :style="{height:'100%',width:'80%'}"
     get-container="body">
@@ -15,13 +16,13 @@
       <div class="pop-footer">
         <van-button
           color="#C6A775"
-          @click="onCancel">{{cancelText}}</van-button>
+          @click.stop="onCancel">{{cancelText}}</van-button>
         <van-button
           :color="primary"
-          @click="onConfirm">{{confirmText}}</van-button>
+          @click.stop="onConfirm">{{confirmText}}</van-button>
       </div>
     </section>
-  </van-popup>  
+  </van-popup>
 </template>
 <script>
 import { theme } from '@/config'
@@ -43,7 +44,7 @@ export default {
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: '重置'
     },
     confirmText: {
       type: String,
@@ -88,10 +89,19 @@ export default {
 <style scoped lang="scss">
 @import "../styles/_global.scss";
 
+.van-popup {
+  position:fixed !important;
+  position:absolute !important;
+  top:50%;
+  bottom:0;
+  right:0;
+  overflow:hidden;
+}
+
 .pop {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &-header {
     height:44px;
@@ -103,13 +113,11 @@ export default {
     color:$color-32;
     padding:0 10px;
     position:relative;
-    //z-index:20;
   }
 
   &-main {
     position:relative;
     flex:1;
-    //z-index:20;
   }
 
   &-scroller {
@@ -125,7 +133,6 @@ export default {
   &-footer {
     height:40px;
     position:relative;
-    //z-index:20;
     @include flex-row();
     align-items:center;
     border-top:1px solid $color-border-gray;

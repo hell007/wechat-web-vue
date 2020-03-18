@@ -8,7 +8,7 @@
         :background="primary"
         clearable
         v-model="key"
-        placeholder="集团名称/订单类型/提单人/订单号/集团编码"
+        placeholder="订单号"
         shape="round"
         @input="onInput"
         @search="onSearch">
@@ -394,11 +394,11 @@ export default {
 
     &-bd {
       @include flex-row();
-      align-items:center;
       flex-wrap:wrap;
 
       span {
         width:30%;
+        min-height:50px;
         text-align:center;
         padding:5px 0;
         font-size:13px;

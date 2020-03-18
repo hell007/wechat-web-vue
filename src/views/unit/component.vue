@@ -17,6 +17,36 @@
     <div class="page-scroller">
 
       <div class="section">
+        <h5>自定义select</h5>
+
+        <vant-select
+          :columns="selects.list"
+          @onSelect="onSelect"></vant-select>
+
+        <br/>
+
+        <vant-select
+          value="选项二"
+          :columns="selects.list"
+          @onSelect="onSelect"></vant-select>  
+      </div>
+
+      <div class="section">
+        <h5>自定义autocomplete</h5>
+
+        <vant-autocomplete
+          :columns="selects.list"
+          @onSelect="autoSelect"></vant-autocomplete>
+
+        <br/>
+
+        <vant-autocomplete
+          value="选项二"
+          :columns="selects.list"
+          @onSelect="autoSelect"></vant-autocomplete>  
+      </div>
+
+      <div class="section">
         <h5>loadding</h5>
 
         <van-button 
@@ -138,9 +168,13 @@
 </template>
 
 <script>
+import vantSelect from '@/components/vantSelect';
+import vantAutocomplete from '@/components/vantAutocomplete';
 export default {
-  name: 'unit-dialog',
+  name: 'unit-component',
   components: {
+    vantSelect,
+    vantAutocomplete
   },
   data() {
     return {
@@ -161,7 +195,26 @@ export default {
       },
       myaction: {
         show: false,
-      }
+      },
+      selects: {
+        list: [{
+          label: '选项一',
+          value: '11',
+        }, {
+          label: '选项二',
+          value: '12',
+        }, {
+          label: '选项三',
+          value: '13',
+        }, {
+          label: '选项四',
+          value: '14',
+        }, {
+          label: '选项五',
+          value: '15',
+        }],
+        selected: '',
+      },
     }
   },
   methods: {
@@ -170,6 +223,7 @@ export default {
     },
     navBack() {
       this.$toast('自定义回退事件');
+      this.$router.back();
     },
     navOption() {
       this.$toast('操作');
@@ -251,6 +305,12 @@ export default {
     onCancel() {
       this.actionsheet.show = false;
       this.$toast('cancel');
+    },
+    onSelect(data) {
+      console.log('onSelect==', data)
+    },
+    autoSelect(index, data) {
+      console.log('autoSelect==', index, data)
     }
   },
   created() {

@@ -17,11 +17,11 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
     compress: true, //启用 gzip 压缩
     historyApiFallback: true,
     overlay: true,
-    host: "localhost",
+    host: "192.168.23.1",// 手机访问服务配置
     // 反向代理
     proxy: {
       '/apis': {
-        target: "www.kunyujie.con",
+        target: "https://ynyd.ynicity.cn",
         changeOrigin: true,
         ws: true,
         pathRewrite: {

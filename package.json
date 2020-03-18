@@ -5,7 +5,7 @@
   "author": "1048523306@qq.com",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config build/webpack.dev.config.js --progress",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config build/webpack.dev.config.js --progress --host 192.168.23.1",
     "build": "rimraf dist/web && cross-env NODE_ENV=production webpack --config build/webpack.pro.config.js --progress --hide-modules",
     "mp": "cross-env NODE_ENV=production webpack --config build/webpack.mp.config.js --progress --hide-modules"
   },

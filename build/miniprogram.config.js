@@ -1,6 +1,6 @@
 module.exports = {
   origin: 'https://test.miniprogram.com',
-  entry: '/',
+  entry: '/index/index',
   router: {
     index: ['/',
       '/todo'
@@ -14,7 +14,7 @@ module.exports = {
     navigationBarTitleText: 'miniprogram-project',
   },
   projectConfig: {
-    appid: '',
+    appid: 'wx97ec407bdf898b4c',
     projectname: 'wechat-web-vue',
   },
   packageConfig: {

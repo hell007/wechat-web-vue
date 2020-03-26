@@ -206,7 +206,7 @@ export default {
       filter: {
         show: false,
         types: [{
-          label: '物联网物联网',
+          label: '物联网',
           value: '11'
         },{
           label: '互联网',
@@ -220,16 +220,16 @@ export default {
         }],
         type: [],
         years: [{
-          label: '物联网',
+          label: '2018',
           value: '11'
         },{
-          label: '物联网',
+          label: '2019',
           value: '12',
         },{
-          label: '物联网',
+          label: '2020',
           value: '13',
         },{
-          label: '物联网',
+          label: '2021',
           value: '14',
         }],   
         year: null, //初始必须为null
@@ -398,7 +398,6 @@ export default {
 
       span {
         width:30%;
-        min-height:50px;
         text-align:center;
         padding:5px 0;
         font-size:13px;

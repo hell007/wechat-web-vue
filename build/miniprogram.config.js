@@ -1,6 +1,6 @@
 module.exports = {
   origin: 'https://test.miniprogram.com',
-  entry: '/index/index',
+  entry: '/',
   router: {
     index: ['/',
       '/todo'

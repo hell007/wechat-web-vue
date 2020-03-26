@@ -62,12 +62,27 @@
           color="#1989fa" 
           vertical>加载中...</van-loading>
 
+        <van-overlay 
+          :show="show" 
+          @click="show = false" 
+          z-index="3">
+          <div style="position:absolute;left:50%;top:50%;width:60px;height:60px;margin-left:-30px;margin-top:-30px;">
+            <van-loading 
+              size="24px"
+              color="#1989fa" 
+              vertical>加载中...</van-loading>
+          </div>
+        </van-overlay>  
+
         <van-button 
           type="primary"
           @click="loaddingShow">显示</van-button>
         <van-button 
           type="info"
           @click="loaddingHide">隐藏</van-button>
+        <van-button 
+          type="info"
+          @click="show = !show">全局</van-button>   
       </div>
 
       <div class="section">
@@ -182,6 +197,7 @@ export default {
       loadding: {
         visible: false
       },
+      show: false,
       overlay: {
         show: false
       },

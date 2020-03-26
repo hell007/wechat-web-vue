@@ -126,6 +126,7 @@ export default {
 
   &-list {
     padding:10px;
+    padding-bottom:50px;
     @include clearfix();
   }
 
@@ -195,6 +196,7 @@ export default {
     }
 
     &-text {
+      flex:5;
 
       h6 {
         font-size:12px;
@@ -233,6 +235,7 @@ export default {
 
     &-text {
       padding:8px;
+      margin-bottom:8px;
       color:$color-32;
     }
   }

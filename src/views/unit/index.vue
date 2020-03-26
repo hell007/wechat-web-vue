@@ -137,7 +137,7 @@ export default {
 .demo {
 
   &-item {
-    padding:10px;
+    padding:15px 10px;
     background-color:$color-white;
     border-bottom:1px solid $color-border-gray;
   }

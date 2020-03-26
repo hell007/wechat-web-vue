@@ -68,8 +68,78 @@ npm install
 		2. 路由后退需要更改为 $router.go(-1)
 		3. router meta 设置 keepAlive
 
-### 2、
+### 2、Vue provide/inject
 
+provide 可以在祖先组件中指定我们想要提供给后代组件的数据或方法，
+而在任何后代组件中，我们都可以使用 inject 来接收 provide 提供的数据或方法
+
+
+		// 根组件提供将自身提供给后代组件
+		export default {
+		  provide () {
+		    return {
+		      app: this
+		    }
+		  },
+		  data () {
+		    return {
+		      text: 'bar'
+		    }
+		  }
+		}
+
+		// 后代组件注入 'app'
+		<template>
+			<div>{{this.app.text}}</div>
+		</template>
+		<script>
+		  export default {
+		    inject: ['app'],
+		    created() {
+		      this.app.text = 'baz' // 在模板中，显示 'baz'
+		    }
+		  }
+		</script>
+
+
+- 提示：provide 和 inject 绑定并不是可响应的。这是刻意为之的。然而，如果你传入了一个可监听的对象，那么其对象的属性还是可响应的。
+
+
+1、使用 $root 依然能够取到根节点，那么我们何必使用 provide/inject 呢？
+
+	在实际开发中，一个项目常常有多人开发，每个人有可能需要不同的全局变量，如果所有人的全局变量都统一定义在根组件，势必会引起变量冲突等问题。
+
+	使用 provide/inject 不同模块的入口组件传给各自的后代组件可以完美的解决该问题。
+
+
+2、使用 provide/inject 编写组件
+
+- 解决耦合度的情况
+
+		// Button 组件核心源码
+		export default {
+		    name: 'ElButton',
+		    // 通过 inject 获取 elForm 以及 elFormItem 这两个组件
+		    inject: {
+		        elForm: {
+		            default: ''
+		        },
+		        elFormItem: {
+		            default: ''
+		        }
+		    },
+		    // ...
+		    computed: {
+		        _elFormItemSize() {
+		            return (this.elFormItem || {}).elFormItemSize;
+		        },
+		        buttonSize() {
+		            return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+		        },
+		        //...
+		    },
+		    // ...
+		};
 
 ## 知识
 

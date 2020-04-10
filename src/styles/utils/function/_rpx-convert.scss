@@ -1,0 +1,35 @@
+@function px-rpx($values...) {
+  @return rpx-convert(1, "px", $values...);
+}
+
+@function design-rpx($values...) {
+  $scale: 750 / $design-width; //2rpx=1px 375为基准 1rpx=1px 750为基准
+  @return rpx-convert($scale, "px", $values...);
+}
+
+@function rpx-convert($scale:1, $defaut-unit: "px", $values...) {
+  $result: ();
+  $separator: list-separator($values);
+
+  @each $value in $values {
+    $item: $value;
+    @if type-of($value) == "number" {
+      @if unitless($value) {
+        $value: add-unit($value, $defaut-unit);
+      }
+      @if unit($value) == "px" {
+        $value: $value / 1px * 1rpx;
+      }
+      $item: $value * $scale;
+    } @else if type-of($value) == "list" {
+      $item: rem-convert($scale, $value...);
+    }
+    $result: append($result, $item, $separator);
+  }
+
+  @if length($result) == 1 {
+    $result: nth($result, 1);
+  }
+
+  @return $result;
+}

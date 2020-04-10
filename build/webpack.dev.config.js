@@ -21,7 +21,7 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
     // 反向代理
     proxy: {
       '/apis': {
-        target: "https://ynyd.ynicity.cn",
+        target: "https://baidu.com",
         changeOrigin: true,
         ws: true,
         pathRewrite: {

@@ -18,6 +18,7 @@ Vue.use(Vant)
 // import eventBus from '@/plugins/eventbus'
 // Vue.use(eventBus)
 
+// 全局变量
 // import echarts from 'echarts'
 // Vue.prototype.$echarts = echarts
 

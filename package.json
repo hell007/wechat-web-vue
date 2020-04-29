@@ -13,8 +13,6 @@
     "vue3"
   ],
   "dependencies": {
-    "@babel/preset-env": "^7.8.7",
-    "@babel/runtime": "^7.8.7",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "iscroll": "^5.2.0",
@@ -30,6 +28,8 @@
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/runtime": "^7.8.7",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-remove-console": "^6.9.4",
@@ -38,6 +38,13 @@
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^11.3.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-vue": "^4.0.0",
     "file-loader": "^1.1.4",
     "glob-all": "^3.1.0",
     "hot-module-replacement": "^3.0.3",

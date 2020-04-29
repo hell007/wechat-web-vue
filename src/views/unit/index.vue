@@ -78,7 +78,10 @@ export default {
         name: '图表使用',
         url: '/echarts'
       }, {
-        name: '百度地图',
+        name: '百度地图1',
+        url: '/map'
+      }, {
+        name: '百度地图2',
         url: '/location'
       }, {
         name: '我的分类',

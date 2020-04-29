@@ -6,7 +6,7 @@
       :isBack="true"
       @onBack="navBack">
       <div slot="right" class="header-right" @click="navOption">
-        <span class="header-right-text">
+        <span class="header-btn header-btn-opt">
           操作
         </span>
       </div>

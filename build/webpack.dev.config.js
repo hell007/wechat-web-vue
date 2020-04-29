@@ -10,14 +10,20 @@ const WebPackMerge = require('webpack-merge')
 module.exports = WebPackMerge(WebPackBaseConfig, {
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, "../dist"),
-    port: 3000,
-    open: true, //自动在浏览器打开
+    clientLogLevel: 'warning',
+    historyApiFallback: {
+      rewrites: [{from: /.*/, to: '/index.html'}],
+    },
     hot: true, //启用热替换模块  必须配置 webpack.HotModuleReplacementPlugin
+    contentBase: false,
     compress: true, //启用 gzip 压缩
     historyApiFallback: true,
     overlay: true,
-    host: "192.168.23.1",// 手机访问服务配置
+    host: '127.0.0.1', //"192.168.23.1",// 手机访问服务配置
+    port: 3000,
+    open: true, //自动在浏览器打开
+    overlay: {warnings: false, errors: true}, // 展示全屏报错
+    publicPath: '/',
     // 反向代理
     proxy: {
       '/apis': {
@@ -29,6 +35,10 @@ module.exports = WebPackMerge(WebPackBaseConfig, {
         }
       },
     },
+    quiet: true, // for FriendlyErrorsPlugin
+    watchOptions: {
+      poll: false,
+    }
   },
   plugins: [
     //启用热替换模块

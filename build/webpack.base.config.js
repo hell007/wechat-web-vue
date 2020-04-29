@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const eslintFriendlyFormatter = require('eslint-friendly-formatter')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -39,10 +40,24 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
   },
   target: 'web',
   module: {
-    rules: [{
+    rules: [
+    // eslint
+    {
+      test: /\.(js|vue)$/,
+      loader: 'eslint-loader',
+      enforce: 'pre',
+      include: [path.resolve(__dirname, '../src')],
+      options: {
+        formatter: eslintFriendlyFormatter,
+        emitWarning: true,
+      },
+    }, 
+    // vue
+    {
       test: /\.vue$/,
       loader: 'vue-loader',
     }, {
@@ -56,24 +71,41 @@ module.exports = {
           }
         }
       ]
-    }, {
+    }, 
+    // js
+    {
       test: /\.js$/,
       loader: 'babel-loader?cacheDirectory',
       exclude: '/node_modules/',
       include: path.resolve(__dirname, '../src')
-    }, {
+    }, 
+    // images
+    {
       test: /\.(png|jpg|gif|svg)$/,
       loader: 'url-loader',
       options: {
         limit: 10000, //10000字节
         esModule: false, // 不配置导致base64的background:url([object Module]);
+        //name: path.posix.join('static', 'img/[name].[hash:7].[ext]'),
         name: 'img/[name].[hash:7].[ext]'
       }
-    }, {
+    }, 
+    // media
+    {
+      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        //name: path.posix.join('static', 'media/[name].[hash:7].[ext]'),
+      },
+    },
+    // font
+    {
       test: /\.(woff|woff2|eot|ttf|otf)(\?.*)?$/,
       loader: 'file-loader',
       options: {
         limit: 10000,
+        //name: path.posix.join('static', 'fonts/[name].[hash:7].[ext]'),
         name: 'fonts/[name].[hash:7].[ext]'
       }
     }]
@@ -81,8 +113,13 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue', '.json', ".scss", ".css"],
     alias: {
+      'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve('src'),
     }
+  },
+  node: {
+    // 避免 webpack 注入不必要的 setImmediate polyfill 因为 Vue 已经将其包含在内
+    setImmediate: false,
   },
   plugins: pluginsConfig,
 }

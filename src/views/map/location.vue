@@ -1,219 +1,221 @@
 <template>
 <div class="page">
   <div class="page-header">
-    <page-title :title="title">
-      <div slot="right" class="header-right">
-        <span class="header-right-icon">
-          <van-icon 
-            name="clock-o" 
-            color="#fff"
-            size="18"/>
-        </span>
-      </div>
-    </page-title>
+    <page-title :title="title"></page-title>
   </div>
 
   <div class="page-main">
-    <div class="page-scroller channel-scroller">
-      <div class="channel-panel">
-        <van-cell
-          title="渠道名称">
-          <span>盘龙迅捷环城东路手机卖场（连锁）</span>
-          <van-icon 
-            name="records" 
-            :color="primary"
-            size="18"/>
-        </van-cell>
-        <van-cell
-          title="渠道编码"
-          value="A0AxxY17">
-        </van-cell>
-      </div>
+    <div class="page-scroller">
+      <section class="visit-panel">
+        <div class="visit-panel-row">
+          <b>客户信息</b>
+          <span>云南白药集团</span>
+        </div>
+        <div class="visit-panel-row">
+          <b>客户编码</b>
+          <span>123456</span>
+        </div>
+      </section>
 
-      <div class="channel-panel" style="margin-bottom:0;">
-        <van-cell
-          class="channel-panel-title"
-          title="当前位置">
-        </van-cell>
-        <ul class="location-position">
-          <li>{{address}}</li>
-          <li>
-            <span>经度：{{center.lng}}</span>
-            <span>纬度：{{center.lat}}</span>
-          </li>
-        </ul>
-      </div>
+      <section class="visit-panel">
+        <div class="visit-panel-cell">
+          <b>客户位置信息</b>
+          <dl class="visit-panel-info">
+            <dt>
+              <p>昆明市呈贡新区呈贡路呈贡新区呈贡路</p>
+              <p>
+                <span>经度：102</span>
+                <span>维度：25</span>
+              </p>
+            </dt>
+            <dd>
+              <van-icon name="close" size="20" :color="primary"/>
+            </dd>
+          </dl>
+        </div>
+      </section>
 
-      <baidu-map 
-          class="channel-map"
-          :center="center" 
-          :zoom="zoom"
-          :scroll-wheel-zoom="true"
-          @ready="onReady"
-          @click="getPoint">
-          
-          <!-- 定位 -->
-          <bm-geolocation 
-            anchor="BMAP_ANCHOR_BOTTOM_RIGHT" 
-            :showAddressBar="true" 
-            :autoLocation="true"
-            :locationIcon="{url: require('../../assets/images/map/current-location.png'), size: {width:16, height:16}}"
-            @locationSuccess="getLoctionSuccess" 
-            @locationError="getLocationError">
-          </bm-geolocation>
-          
-          <!-- 覆盖物 -->
-          <bm-marker 
-            animation="BMAP_ANIMATION_BOUNCE"
-            :dragging="true"
-            v-for="item,index in list"
-            :key="index"
-            :position="{lng:item.longitude, lat:item.latitude}"  
-            :icon="{url: item.icon, size: {width:16, height:16}}"
-            @click="showInfo(item)">
-          </bm-marker>
-        </baidu-map>
+      <section class="visit-panel" style="margin-bottom:0;">
+        <div class="visit-panel-cell">
+          <b>当前位置</b>
+          <dl class="visit-panel-info">
+            <dt>
+              <p>昆明市呈贡新区呈贡路呈贡新区呈贡路</p>
+              <p>
+                <span>经度：102</span>
+                <span>维度：25</span>
+              </p>
+            </dt>
+          </dl>
+        </div>
+      </section>
+
+      <!-- 地图 -->
+      <baidu-map
+        class="visit-map"
+        :center="center"
+        :zoom="zoom"
+        :scroll-wheel-zoom="true"
+        @click="getPoint">
+
+        <div class="visit-map-center" 
+          @click="showInfo()">
+          <img src="../../assets/images/map/map-center.png" />
+        </div>
+      </baidu-map>
+      
     </div>
   </div>
-  
+
   <div class="page-footer">
-    <div class="location-bar">
-      <van-button 
-        class="location-submit"
-        round
-        :color="primary">提交渠道位置信息</van-button>
+    <div class="visit-submit">
+      <van-button  
+        block 
+        :color="primary" 
+        @click="onSubmit">提交客户位置</van-button>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-// vue-baidu-map api 使用地址
-// https://dafrok.github.io/vue-baidu-map/#/zh/start/usage
 import Vue from 'vue'
 import BaiduMap from 'vue-baidu-map'
 Vue.use(BaiduMap, {
-  ak: 'GGq2cszWgcFIsAczly1ntjYNAbUw8R8P'    
+  ak: 'GGq2cszWgcFIsAczly1ntjYNAbUw8R8P'
 })
 
-import { theme } from '@/config';
+import { theme } from '@/config'
 export default {
-  name: 'channel-location',
+  name: 'visit-location',
   components: {
   },
   data() {
     return {
       primary: theme.primary,
-      title: '渠道位置收集',
-      address: '',
-      center: {lng: 0, lat: 0},
+      title: '客户位置维护',
+      center: {
+        lng: 102.71460114, 
+        lat: 25.0491531,
+        address:'云南省昆明市五华区民权街67号'
+      },
       show: false,
-      zoom: 3, //放大比例
-      list: []
+      zoom: 15, //放大比例
     }
   },
   methods: {
     onReady ({BMap, map}) {
-      //console.log(BMap, map)
-      const self = this
-      var geolocation = new BMap.Geolocation();
+      var self = this;
+      const geolocation = new BMap.Geolocation();
       geolocation.getCurrentPosition(function(r){
-        console.log('r===', r)
-        self.address = r.address.province + r.address.city
-        self.center = {lng: r.longitude, lat: r.latitude}
-        self.zoom = 15
+        self.center = {lng: r.point.longitude, lat: r.point.latitude,address:r.address.province}
       },{enableHighAccuracy: true})
     },
-    getPoint(e) {
-      console.log('e=',e)
+    getPoint({type, target, point, pixel, overlay}) {
+      console.log('point=',point)
+      this.center = {lng:  point.lng, lat: point.lat}
     },
-    showInfo(scope) {
-      console.log('scope=',scope)
-      this.show = true
+    showInfo() {
+      this.$toast(this.center.address)
     },
-    getLoctionSuccess() {
-      this.$toast('定位成功！')
-    },
-    getLocationError() {
-      this.$toast('定位失败！')
+    onSubmit() {
+      this.$toast('手工上报')
     }
   },
   created() {
+    
   }
 }
 </script>
-
 <style scoped lang="scss">
 @import "../../styles/_global.scss";
 
-.channel {
+.visit {
 
   &-panel {
-    margin-bottom:$margin;
-
-    .van-cell {
-      font-size:12px;
-    }
-
-    .van-cell__title {
-      color:$color-32;
-      flex:1;
-    }
-
-    .van-cell__value {
-      flex:3;
-      color:$color-7d;
-      text-align:left;
-    }
-
-    &-title {
-      
-      .van-cell__title {
-        color:$color-32;
-        font-size:14px;
-      }
-    }
-  }
-
-  &-scroller {
-    overflow:hidden;
-  }
-
-  &-map {
-    width:100%;
-    height:100%;
-    min-height:200px;
-  }
-}
-
-.location {
-
-  &-position {
+    margin:8px 0;
     padding:0 16px;
     background-color:$color-white;
 
-    li {
+    &-row {
       @include flex-row();
-      padding:8px 0;
-      font-size:12px;
-      color:$color-7d;
+      align-items:center;
+      padding:10px 0;
+      font-size:14px;
+      border-bottom:1px solid $color-border-gray;
+
+      &:last-child {
+        border-bottom:0;
+      }
+
+      b {
+        flex:1.5;
+      }
 
       span {
+        flex:3;
+        text-align:right;
+        color:$color-7d;
+      }
+    }
+
+    &-cell {
+      padding:8px 0;
+    }
+
+    &-info {
+      font-size:14px;
+      @include flex-row();
+      align-items:center;
+      margin-top:8px;
+      margin-bottom:0;
+
+      dt,dd {
+        font-weight:normal;
+        margin-bottom:0;
+      }
+
+      dt {
+        flex:6;
+      }
+
+      dd {
         flex:1;
+        text-align:center;
+      }
+
+      p {
+        margin-bottom:4px;
+        color:$color-7d;
+        font-size:12px;
+      }
+
+      span {
+        margin-right:10px;
       }
     }
   }
+  
+  &-map {
+    width:100%;
+    height:70%;
+    min-height:260px;
+    position:relative;
 
-  &-bar {
-    text-align:center;
-    padding:10px 0;
-    background-color:$color-white;
+    &-center {
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:18px;
+      height:30px;
+      margin-left:-9px;
+      margin-top:-38px;
+    }
   }
 
   &-submit {
-    width:200px;
-    margin:0 auto;
+    background-color:$color-white;
+    margin:10px;
   }
-
 }
 </style>

@@ -15,12 +15,10 @@ const buildDate = moment().format('YYYYMMDDhhmmss');
 
 module.exports = WebPackMerge(WebPackBaseConfig, {
   output: {
-    filename: `js/[name].${buildDate}.js`,
-    publicPath: './',
-    chunkFilename: `js/[name].${buildDate}.js`,
     path: path.resolve(__dirname, '../dist/web'),
+    filename: `js/[name].${buildDate}.js`,
+    chunkFilename: `js/[name].${buildDate}.js`,
   },
-  target: 'web',
   optimization: {
     // 分割代码
     splitChunks: {

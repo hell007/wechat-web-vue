@@ -1,12 +1,9 @@
 <template>
 <div class="page">
   <div class="page-header">
-    <page-title 
-      :title="title"
-      :isBack="true"
-      @onBack="navBack">
+    <page-title :title="title">
       <div slot="right" class="header-right" @click="navOption">
-        <span class="header-btn header-btn-opt">
+        <span class="header-right-text">
           操作
         </span>
       </div>
@@ -17,42 +14,24 @@
     <div class="page-scroller">
 
       <div class="section">
-        <h5>自定义select</h5>
-
-        <vant-select
-          :columns="selects.list"
-          @onSelect="onSelect"></vant-select>
-
-        <br/>
-
-        <vant-select
-          value="选项二"
-          :columns="selects.list"
-          @onSelect="onSelect"></vant-select>  
-      </div>
-
-      <div class="section">
-        <h5>自定义autocomplete</h5>
-
-        <vant-autocomplete
-          :columns="selects.list"
-          @onSelect="autoSelect"></vant-autocomplete>
-
-        <br/>
-
-        <vant-autocomplete
-          value="选项二"
-          :columns="selects.list"
-          @onSelect="autoSelect"></vant-autocomplete>  
-      </div>
-
-      <div class="section">
-        <h5>loadding</h5>
-
+        <h5>picker</h5>
         <van-button 
-          type="info"
-          @click="go">首页</van-button>
+          type="primary" 
+          text="选择" 
+          @click="picker.show = true" />
       </div>
+      <van-popup
+        v-model="picker.show"
+        position="bottom">
+        <van-picker
+          show-toolbar
+          value-key="name"
+          title="请选择角色"
+          :columns="picker.columns"
+          @cancel="pickerCancel"
+          @confirm="pickerConfirm"
+        />
+      </van-popup>
 
       <div class="section">
         <h5>loadding</h5>
@@ -72,7 +51,7 @@
               color="#1989fa" 
               vertical>加载中...</van-loading>
           </div>
-        </van-overlay>  
+        </van-overlay>
 
         <van-button 
           type="primary"
@@ -82,7 +61,7 @@
           @click="loaddingHide">隐藏</van-button>
         <van-button 
           type="info"
-          @click="show = !show">全局</van-button>   
+          @click="show = !show">全局</van-button>  
       </div>
 
       <div class="section">
@@ -183,21 +162,17 @@
 </template>
 
 <script>
-import vantSelect from '@/components/vantSelect';
-import vantAutocomplete from '@/components/vantAutocomplete';
 export default {
-  name: 'unit-component',
+  name: 'unit-dialog',
   components: {
-    vantSelect,
-    vantAutocomplete
   },
   data() {
     return {
       title: '通用组件',
+      show: false,
       loadding: {
         visible: false
       },
-      show: false,
       overlay: {
         show: false
       },
@@ -212,37 +187,38 @@ export default {
       myaction: {
         show: false,
       },
-      selects: {
-        list: [{
-          label: '选项一',
-          value: '11',
+      picker: {
+        show: false,
+        select: '',
+        columns: [{
+          id: 1,
+          name: '张飞'
         }, {
-          label: '选项二',
-          value: '12',
+          id: 2,
+          name: '关羽'
         }, {
-          label: '选项三',
-          value: '13',
+          id: 2,
+          name: '刘备'
         }, {
-          label: '选项四',
-          value: '14',
-        }, {
-          label: '选项五',
-          value: '15',
-        }],
-        selected: '',
-      },
+          id: 2,
+          name: '赵云'
+        }]
+      }
     }
   },
   methods: {
-    go() {
-      this.$router.back()
-    },
     navBack() {
-      this.$toast('自定义回退事件');
       this.$router.back();
     },
     navOption() {
       this.$toast('操作');
+    },
+    pickerCancel() {
+      this.picker.show = false
+    },
+    pickerConfirm(item) {
+      this.$toast(item.name)
+      this.picker.show = false
     },
     loaddingShow() {
       this.loadding.visible = true
@@ -321,15 +297,10 @@ export default {
     onCancel() {
       this.actionsheet.show = false;
       this.$toast('cancel');
-    },
-    onSelect(data) {
-      console.log('onSelect==', data)
-    },
-    autoSelect(index, data) {
-      console.log('autoSelect==', index, data)
     }
   },
   created() {
+    
   }
 }
 </script>
@@ -347,6 +318,10 @@ export default {
   }
   .action-box {
     padding:10px;
+  }
+
+  .van-popup {
+    background-color:none;
   }
 
 </style>

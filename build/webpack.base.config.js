@@ -46,16 +46,16 @@ module.exports = {
   module: {
     rules: [
     // eslint
-    {
-      test: /\.(js|vue)$/,
-      loader: 'eslint-loader',
-      enforce: 'pre',
-      include: [path.resolve(__dirname, '../src')],
-      options: {
-        formatter: eslintFriendlyFormatter,
-        emitWarning: true,
-      },
-    }, 
+    // {
+    //   test: /\.(js|vue)$/,
+    //   loader: 'eslint-loader',
+    //   enforce: 'pre',
+    //   include: [path.resolve(__dirname, '../src')],
+    //   options: {
+    //     formatter: eslintFriendlyFormatter,
+    //     emitWarning: true,
+    //   },
+    // }, 
     // vue
     {
       test: /\.vue$/,

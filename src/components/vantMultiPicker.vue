@@ -1,8 +1,8 @@
 <template>
   <!--城市多级联动-->
-  <van-popup 
+  <van-popup
     class="multiPicker"
-    v-model="multiPicker.show" 
+    v-model="multiPicker.show"
     :close-on-click-overlay="false"
     position="bottom">
     <div class="multiPicker-hd">
@@ -12,29 +12,30 @@
         <van-icon name="cross" size="20" />
       </span>
     </div>
-    <van-tabs 
+    <van-tabs
       :color="primary"
       :title-active-color="primary"
       :border="false"
       v-model="multiPicker.active"
       animated
       class="multiPicker-tabs">
-      <van-tab 
+      <van-tab
         class="multiPicker-panel"
         v-for="mpList,mpIndex in multiPicker.columns"
         :key="mpIndex"
-        :title="mpList.length>0 ? multiPicker.selected[mpIndex].name : ''" 
-        :name="mpIndex">
+        :title="mpList.length>0 ? multiPicker.selected[mpIndex].name : ''"
+        :name="mpIndex"
+        :disabled="multiPicker.disabled[mpIndex]">
         <ul class="multiPicker-panel-list"
           v-if="!multiPicker.loading">
           <li class="multiPicker-panel-item"
             v-for="item,index in mpList"
-            :key="item.name"
+            :key="index"
             @click="multiPickerSelect(mpIndex, item)">
-            <van-icon 
+            <van-icon
               class="multiPicker-panel-item-check"
               v-if="multiPicker.selected[mpIndex] && multiPicker.selected[mpIndex].name == item.name"
-              name="success" 
+              name="success"
               :color="primary"
               size="12" />
             <span>{{item.name}}</span>
@@ -42,9 +43,9 @@
         </ul>
         <div class="multiPicker-panel-loading"
            v-if="multiPicker.loading">
-          <van-loading 
+          <van-loading
             size="28px"
-            :color="primary" 
+            :color="primary"
             vertical>
             {{tips}}
           </van-loading>
@@ -54,7 +55,7 @@
   </van-popup>
 </template>
 <script>
-import { theme } from '@/config'  
+import { theme } from '@/config'
 export default {
   name: "vant-multi-picker",
   data() {
@@ -65,6 +66,7 @@ export default {
         level: 2, // 层级 根据需求自定义
         active: 0,
         loading: false,
+        disabled:[],
         columns: [],
         selected: []
       },
@@ -146,7 +148,7 @@ export default {
     margin-top:-2px;
 
     /deep/ .van-tabs{
-      
+
       &__wrap {
         height:40px;
       }
@@ -194,6 +196,6 @@ export default {
         color:$color-primary;
       }
     }
-  } 
+  }
 }
 </style>

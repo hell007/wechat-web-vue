@@ -32,7 +32,6 @@
 <script>
 import contentWithEmpty from '@/components/contentWithEmpty';
 import * as utils from '@/utils';
-
 export default {
   name: 'unit-refresh',
   components: {
@@ -56,19 +55,15 @@ export default {
     },
     getList() {
       const self = this
-
       const state = true
       const total = 90
       if (state) {
-
         let p = Math.ceil(total / self.pageSize)
-
         // 暂无数据
         if (total==0) {
           self.noData = true
           return
         }
-
         // 有数据
         
         if (self.pageNum > p) {// 没有数据了
@@ -88,7 +83,6 @@ export default {
             self.loadding = false
           })
         }
-
       } else {// 错误提示
         self.$message({
           message: '查询失败了！',
@@ -109,7 +103,6 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "../../styles/_global.scss";
-
 .item {
   padding:10px 12px;
   background-color:$color-white;

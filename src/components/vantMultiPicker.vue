@@ -26,6 +26,14 @@
         :title="mpList.length>0 ? multiPicker.selected[mpIndex].name : ''"
         :name="mpIndex"
         :disabled="multiPicker.disabled[mpIndex]">
+        <form action="/">
+          <van-search
+            v-model="searchKey[mpIndex]"
+            placeholder="请输入搜索关键词"
+            @search="onSearch(mpIndex,mpList)"
+            @clear="onClear(mpIndex)"
+          />
+        </form>
         <ul class="multiPicker-panel-list"
           v-if="!multiPicker.loading">
           <li class="multiPicker-panel-item"
@@ -70,6 +78,8 @@ export default {
         columns: [],
         selected: []
       },
+      searchKey: [],
+      bak: [],
       tips: '加载中...'
     }
   },
@@ -106,6 +116,20 @@ export default {
   methods: {
     onCancel() {
       this.$emit('cancel');
+    },
+    onSearch(mpIndex, list) {
+      const self = this
+      this.bak[mpIndex] = list
+      var reg = new RegExp(self.searchKey[mpIndex])
+      let newList = list.filter(function(e){
+        return e.name.match(reg)
+      })
+      this.$set(self.multiPicker.columns, mpIndex, newList)
+      //console.log('e===', self.multiPicker.columns)
+    },
+    onClear(mpIndex) {
+      const self = this
+      this.$set(self.multiPicker.columns, mpIndex, self.bak[mpIndex])
     },
     multiPickerSelect(mpIndex, item) {
       this.$emit('change', mpIndex, item);

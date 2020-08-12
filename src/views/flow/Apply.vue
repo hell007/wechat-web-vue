@@ -105,13 +105,17 @@ const data = {
   {
     name: '图片',
     value:[{
-      url: require('../../assets/images/icons/pro_qdzr.png')
+      url: require('../../assets/images/icons/pro_qdzr.png'),
+      status: 'uploading',
+      message: '上传中...'
     },{
-      url: require('../../assets/images/icons/pro_qdzr.png')
+      url: require('../../assets/images/icons/pro_qdzr.png'),
+      status: 'failed',
+      message: '上传失败'
     },{
-      url: require('../../assets/images/icons/pro_qdzr.png')
-    },{
-      url: require('../../assets/images/icons/pro_qdzr.png')
+      url: require('../../assets/images/icons/pro_qdzr.png'),
+      status: 'done',
+      message: '上传成功'
     }],
     defaultLable: '图片',
     defaultRequired: true,

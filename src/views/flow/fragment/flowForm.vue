@@ -164,7 +164,10 @@
           accept="image/*"
           :max-count="4"
           :max-size="500*1024"
-          :after-read="photoAfterread" />
+          :preview-full-image="true"
+          :name="index"
+          :after-read="photoAfterread"
+          @delete="photoDelete" />
       </div> 
       <!-- attachment -->
       <div class="component-item component-attachment"
@@ -598,8 +601,13 @@ export default {
     datetimeCancel() {
       this.datetime.show = false
     },
-    photoAfterread(file) {
-      console.log(file)
+    photoAfterread(file, a) {
+      console.log(file, a)
+      console.log('photo', this.list[a.name])
+    },
+    photoDelete(file, a) {
+      console.log(file, a)
+      console.log('photo', this.list[a.name])
     },
     attachmentAfterread(file) {
       console.log(file)

@@ -12,7 +12,8 @@
           </div>
           <div class="flow-panel-name">智赋发起流程</div>
           <div class="flow-panel-state">
-            <img src="../../assets/images/icons/pro_hhph.png" class="adopt-img">
+            <img src="../../assets/images/flow/pass.png" />
+            <!-- <img src="../../assets/images/flow/unpass.png" /> -->
           </div> 
         </section>
         <van-tabs 
@@ -364,10 +365,9 @@ export default {
       overflow:hidden;
     }
 
-    &-picture,
-    &-state {
-      width: 55px;
-      height: 55px;
+    &-picture {
+      width: 50px;
+      height: 50px;
       overflow:hidden;
     }
 
@@ -376,6 +376,8 @@ export default {
     }
 
     &-state { 
+      width: 60px;
+      height: 50px;
       margin-left:10px;
     }
 

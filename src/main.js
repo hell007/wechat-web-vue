@@ -14,9 +14,9 @@ import 'vant/lib/index.css'
 import 'vant/lib/icon/local.css' //引用字体css
 Vue.use(Vant)
 
-//使用插件
-import eventBus from '@/plugins/eventbus'
-Vue.use(eventBus)
+// 引入loading
+import loading from '@/components/loading' 
+Vue.use(loading)
 
 // 全局变量
 // import echarts from 'echarts'

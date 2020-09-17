@@ -133,7 +133,62 @@ export const constantRouter = [{
   name: '智能搜索',
   component: () =>
     import ('@/views/search/smart')
-}]
+}, {
+    path: '/addressbook',
+    name: '通讯录',
+    component: () =>
+      import ('@/views/addressbook/Index')
+  }, {
+    path: '/addressbookSearch',
+    name: '通讯录',
+    component: () =>
+      import ('@/views/addressbook/Search')
+  }, {
+    path: '/addressbookDetail',
+    name: '',
+    component: () =>
+      import ('@/views/addressbook/Detail')
+  }, , {
+    path: '/flow',
+    name: '流程管理',
+    component: () =>
+      import ('@/views/flow/Index')
+  }, {
+    path: '/flowSearch',
+    name: '流程搜索',
+    component: () =>
+      import ('@/views/flow/Search')
+  }, {
+    path: '/flowSteps',
+    name: '流程进度',
+    component: () =>
+      import ('@/views/flow/Steps')
+  }, {
+    path: '/flowApply',
+    name: '上报流程',
+    component: () =>
+      import ('@/views/flow/Apply')
+  }, {
+    path: '/flowApprover',
+    name: '审批人',
+    component: () =>
+      import ('@/views/flow/Approver')
+  }, {
+    path: '/flowTask',
+    name: '工单流程',
+    component: () =>
+      import ('@/views/flow/Task')
+  }, {
+    path: '/flowTaskApproval',
+    name: '工单流程审批',
+    component: () =>
+      import ('@/views/flow/TaskApproval')
+  }, {
+    path: '/flowTaskDetail',
+    name: '工单流程详情',
+    component: () =>
+      import ('@/views/flow/TaskDetail')
+  }]
 
 //路由详细配置
 export default new VueRouter({

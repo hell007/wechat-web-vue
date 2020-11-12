@@ -34,34 +34,25 @@
       </van-popup>
 
       <div class="section">
-        <h5>loadding</h5>
+        <h5>loading</h5>
         <van-loading 
-          v-if="loadding.visible"
+          v-if="loading.visible"
           size="24px"
           color="#1989fa" 
           vertical>加载中...</van-loading>
 
-        <van-overlay 
-          :show="show" 
-          @click="show = false" 
-          z-index="3">
-          <div style="position:absolute;left:50%;top:50%;width:60px;height:60px;margin-left:-30px;margin-top:-30px;">
-            <van-loading 
-              size="24px"
-              color="#1989fa" 
-              vertical>加载中...</van-loading>
-          </div>
-        </van-overlay>
-
         <van-button 
           type="primary"
-          @click="loaddingShow">显示</van-button>
+          @click="loadingShow">显示</van-button>
         <van-button 
           type="info"
-          @click="loaddingHide">隐藏</van-button>
+          @click="loadingHide">隐藏</van-button>
         <van-button 
           type="info"
-          @click="show = !show">全局</van-button>  
+          @click="loadingall">全局</van-button>  
+        <van-button 
+          type="info"
+          @click="loadingall2">全局关闭</van-button>   
       </div>
 
       <div class="section">
@@ -170,7 +161,7 @@ export default {
     return {
       title: '通用组件',
       show: false,
-      loadding: {
+      loading: {
         visible: false
       },
       overlay: {
@@ -220,11 +211,17 @@ export default {
       this.$toast(item.name)
       this.picker.show = false
     },
-    loaddingShow() {
-      this.loadding.visible = true
+    loadingShow() {
+      this.loading.visible = true
     },
-    loaddingHide() {
-      this.loadding.visible = false
+    loadingHide() {
+      this.loading.visible = false
+    },
+    loadingall() {
+      this.$loading.show()
+    },
+    loadingall2() {
+      this.$loading.hide()
     },
     toast() {
       this.$toast('提示文字');
@@ -300,7 +297,6 @@ export default {
     }
   },
   created() {
-    
   }
 }
 </script>
